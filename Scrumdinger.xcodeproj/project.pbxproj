@@ -75,10 +75,10 @@
 		CA05E3242C996FA400BA3675 = {
 			isa = PBXGroup;
 			children = (
-				CA05E32F2C996FA400BA3675 /* Scrumdinger */,
 				CA05E3402C996FA500BA3675 /* ScrumdingerTests */,
 				CA05E34A2C996FA500BA3675 /* ScrumdingerUITests */,
 				CA05E32E2C996FA400BA3675 /* Products */,
+				CA05E32F2C996FA400BA3675 /* Scrumdinger */,
 			);
 			sourceTree = "<group>";
 		};
