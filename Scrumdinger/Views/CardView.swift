@@ -1,3 +1,7 @@
+/*
+ See LICENSE folder for this sample’s licensing information.
+ */
+
 import SwiftUI
 
 struct CardView: View {
@@ -23,7 +27,7 @@ struct CardView: View {
     }
 }
 
-struct CardView_Preview: PreviewProvider {
+struct CardView_Previews: PreviewProvider {
     static var scrum = DailyScrum.sampleData[0]
     static var previews: some View {
         CardView(scrum: scrum)

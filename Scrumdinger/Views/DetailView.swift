@@ -1,9 +1,13 @@
+/*
+ See LICENSE folder for this sample’s licensing information.
+ */
+
 import SwiftUI
 
 struct DetailView: View {
     @Binding var scrum: DailyScrum
-    
     @State private var editingScrum = DailyScrum.emptyScrum
+
     @State private var isPresentingEditView = false
     
     var body: some View {
@@ -14,14 +18,12 @@ struct DetailView: View {
                         .font(.headline)
                         .foregroundColor(.accentColor)
                 }
-                
                 HStack {
                     Label("Length", systemImage: "clock")
                     Spacer()
                     Text("\(scrum.lengthInMinutes) minutes")
                 }
                 .accessibilityElement(children: .combine)
-                
                 HStack {
                     Label("Theme", systemImage: "paintpalette")
                     Spacer()
@@ -33,18 +35,15 @@ struct DetailView: View {
                 }
                 .accessibilityElement(children: .combine)
             }
-            
             Section(header: Text("Attendees")) {
                 ForEach(scrum.attendees) { attendee in
                     Label(attendee.name, systemImage: "person")
                 }
             }
-            
             Section(header: Text("History")) {
                 if scrum.history.isEmpty {
                     Label("No meetings yet", systemImage: "calendar.badge.exclamationmark")
                 }
-                
                 ForEach(scrum.history) { history in
                     HStack {
                         Image(systemName: "calendar")
@@ -70,7 +69,6 @@ struct DetailView: View {
                                 isPresentingEditView = false
                             }
                         }
-                        
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
                                 isPresentingEditView = false

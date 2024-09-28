@@ -1,13 +1,21 @@
+/*
+ See LICENSE folder for this sample’s licensing information.
+ */
+
 import Foundation
 
-struct DailyScrum: Identifiable {
+struct DailyScrum: Identifiable, Codable {
     let id: UUID
     var title: String
     var attendees: [Attendee]
     var lengthInMinutes: Int
     var lengthInMinutesAsDouble: Double {
-        get { Double(lengthInMinutes) }
-        set { lengthInMinutes = Int(newValue) }
+        get {
+            Double(lengthInMinutes)
+        }
+        set {
+            lengthInMinutes = Int(newValue)
+        }
     }
     var theme: Theme
     var history: [History] = []
@@ -22,9 +30,9 @@ struct DailyScrum: Identifiable {
 }
 
 extension DailyScrum {
-    struct Attendee: Identifiable {
+    struct Attendee: Identifiable, Codable {
         let id: UUID
-        let name: String
+        var name: String
         
         init(id: UUID = UUID(), name: String) {
             self.id = id
@@ -38,23 +46,19 @@ extension DailyScrum {
 }
 
 extension DailyScrum {
-    static let sampleData: [DailyScrum] = [
-        DailyScrum(
-            title: "Design",
-            attendees: ["Cathy", "Daisy", "Simon", "Jonathan"],
-            lengthInMinutes: 10,
-            theme: .yellow
-        ),
-        DailyScrum(
-            title: "App Dev",
-            attendees: ["Katie", "Gray", "Euna", "Luis", "Darla"],
-            lengthInMinutes: 5,
-            theme: .orange),
-        DailyScrum(
-            title: "Web Dev",
-            attendees: ["Chella", "Chris", "Christina", "Eden", "Karla", "Lindsey", "Aga", "Chad", "Jenn", "Sarah"],
-            lengthInMinutes: 5,
-            theme: .poppy
-        )
+    static let sampleData: [DailyScrum] =
+    [
+        DailyScrum(title: "Design",
+                   attendees: ["Cathy", "Daisy", "Simon", "Jonathan"],
+                   lengthInMinutes: 10,
+                   theme: .yellow),
+        DailyScrum(title: "App Dev",
+                   attendees: ["Katie", "Gray", "Euna", "Luis", "Darla"],
+                   lengthInMinutes: 5,
+                   theme: .orange),
+        DailyScrum(title: "Web Dev",
+                   attendees: ["Chella", "Chris", "Christina", "Eden", "Karla", "Lindsey", "Aga", "Chad", "Jenn", "Sarah"],
+                   lengthInMinutes: 5,
+                   theme: .poppy)
     ]
 }

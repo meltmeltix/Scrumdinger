@@ -1,8 +1,12 @@
+/*
+ See LICENSE folder for this sample’s licensing information.
+ */
+
 import Foundation
 
-struct History: Identifiable {
-    var id: UUID = UUID()
-    var date: Date
+struct History: Identifiable, Codable {
+    let id: UUID
+    let date: Date
     var attendees: [DailyScrum.Attendee]
     
     init(id: UUID = UUID(), date: Date = Date(), attendees: [DailyScrum.Attendee]) {

@@ -1,3 +1,7 @@
+/*
+ See LICENSE folder for this sample’s licensing information.
+ */
+
 import SwiftUI
 import AVFoundation
 
@@ -12,27 +16,25 @@ struct MeetingView: View {
             RoundedRectangle(cornerRadius: 16.0)
                 .fill(scrum.theme.mainColor)
             VStack {
-                MeetingHeaderView(
-                    secondsElapsed: scrumTimer.secondsElapsed,
-                    secondsRemaining: scrumTimer.secondsRemaining,
-                    theme: scrum.theme)
+                MeetingHeaderView(secondsElapsed: scrumTimer.secondsElapsed, secondsRemaining: scrumTimer.secondsRemaining, theme: scrum.theme)
                 Circle()
                     .strokeBorder(lineWidth: 24)
                 MeetingFooterView(speakers: scrumTimer.speakers, skipAction: scrumTimer.skipSpeaker)
             }
-            .padding()
-            .foregroundColor(scrum.theme.accentColor)
-            .onAppear { startScrum() }
-            .onDisappear{ endScrum() }
-            .navigationBarTitleDisplayMode(.inline)
         }
+        .padding()
+        .foregroundColor(scrum.theme.accentColor)
+        .onAppear {
+            startScrum()
+        }
+        .onDisappear {
+            endScrum()
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func startScrum() {
-        scrumTimer.reset(
-            lengthInMinutes: scrum.lengthInMinutes,
-            attendees: scrum.attendees
-        )
+        scrumTimer.reset(lengthInMinutes: scrum.lengthInMinutes, attendees: scrum.attendees)
         scrumTimer.speakerChangedAction = {
             player.seek(to: .zero)
             player.play()
